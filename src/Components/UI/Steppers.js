@@ -18,8 +18,8 @@ const styles = theme => ({
     display: 'inline-block',
   },
   instructions: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing.unit
+    
   },
 });
 

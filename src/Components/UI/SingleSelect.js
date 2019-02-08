@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-
+import FormControl from '@material-ui/core/FormControl';
 import NoSsr from '@material-ui/core/NoSsr';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
@@ -14,6 +14,7 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
+
 
 const skills = [
   {label:'Bachelors Degree'},
@@ -28,7 +29,11 @@ const skills = [
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginTop:'40px'
+    marginTop:'40px',
+    marginLeft:'-8px'
+  },
+  formControl: {
+    margin: theme.spacing.unit
   },
   input: {
     display: 'flex',
@@ -198,16 +203,20 @@ class SingleSelect extends React.Component {
     return (
       <div className={classes.root}>
         <NoSsr>
-          <Select
-            classes={classes}
-            styles={selectStyles}
-            options={skills}
-            components={components}
-            value={this.props.qualification}
-            onChange={this.props.changed('qualification')}
-            placeholder="Qualification"
-            isClearable
-          />
+        <FormControl className={classes.formControl} fullWidth={true} error>
+        <Select
+        fullWidth
+        classes={classes}
+        styles={selectStyles}
+        options={skills}
+        components={components}
+        value={this.props.qualification}
+        onChange={this.props.changed('qualification')}
+        placeholder="Qualification"
+        isClearable
+      />
+        </FormControl>
+        
           <div className={classes.divider} />
           
         </NoSsr>

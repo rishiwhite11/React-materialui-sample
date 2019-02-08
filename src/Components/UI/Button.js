@@ -6,10 +6,8 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
   input: {
     display: 'none',
-  },
-  root:{
-    marginTop:'30px'
   }
+  
 });
 
 function OutlinedButtons(props) {
