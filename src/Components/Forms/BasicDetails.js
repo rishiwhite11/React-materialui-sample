@@ -35,7 +35,6 @@ export class BasicDetails extends Component {
 
   handleTextField = (event) => {
       const name = event.target.value;
-      console.warn(name.length)
       const regex = /^[a-zA-Z0-9- ,_]*$/;
       if(!regex.test(name)){
           this.setState({
@@ -68,7 +67,7 @@ export class BasicDetails extends Component {
     const {classes} = this.props;
     return (
       <div className={classes.root}>
-        <Grid container spacing={16} direction="row" justify="center">
+        <Grid container spacing={24} direction="row" justify="center">
             <Grid item xs={8}>
                 <Card className={classes.card}>
                     <CardContent>
@@ -84,7 +83,7 @@ export class BasicDetails extends Component {
                         <SingleSelect changed={this.handleChange}
                          qualification={this.props.qualification}/>
                         <MultiSelect changed={this.handleChange} skills={this.props.skills}/>
-                        <DateField birthday={this.props.birthday} 
+                        <DateField birthday={this.props.birthday} label="birthday"
                         changeDate={this.changeDate}/>
                         <Button color="primary" 
                         text="continue" disabled={this.state.disabled}

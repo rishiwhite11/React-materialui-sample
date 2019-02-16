@@ -7,12 +7,14 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginLeft:'-8px',
-    height:'100px'
+    marginLeft:'-12px',
+    height:'100px',
+    marginRight:'50px',
+    marginTop: '30px'
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing.unit*2,
+    marginRight: theme.spacing.unit*2,
     width: 200,
   },
 });
@@ -25,7 +27,7 @@ function DatePickers(props) {
       <TextField
         id="date"
         fullWidth
-        label="Birthday"
+        label={props.label}
         type="date"
         className={classes.textField}
         InputLabelProps={{

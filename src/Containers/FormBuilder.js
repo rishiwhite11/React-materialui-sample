@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import BasicDetails from '../Components/Forms/BasicDetails'
-
+import ProfessionalDetails from '../Components/Forms/ProfessionalDetails'
 export class FormBuilder extends Component {
   
   state = {
@@ -10,11 +10,7 @@ export class FormBuilder extends Component {
       qualification:null,
       skills:null,
       date: '',
-      professionalQualifications:[{
-          companyName:'',
-          startDate:'',
-          endDate:''
-      }]
+      professionalQualifications:[]
   } 
   nextStep = () => {
       console.log(this.state)
@@ -36,7 +32,9 @@ export class FormBuilder extends Component {
   }
 
   handleTextField = (value) => {
-      console.log(value);
+      this.setState({
+          name: value
+      })
   }
 
   changeDate = (date) => {
@@ -44,6 +42,23 @@ export class FormBuilder extends Component {
           date: date
       })
   }
+
+  addProfessionalData = (data) => {
+      this.setState({
+        professionalQualifications: this.state.professionalQualifications.concat(data)
+      })
+  }
+
+  updateProfessionalData = (data) => {
+      console.log(JSON.stringify(data))
+      const index = this.state.professionalQualifications.findIndex((item, i) => {
+          return item.company === data.company
+      })
+      console.error(index);
+      this.setState({
+          professionalQualifications: this.state.professionalQualifications
+      })
+    }
   render() {
     const {step} = this.state;
     switch(step){
@@ -54,7 +69,10 @@ export class FormBuilder extends Component {
             changeDate={this.changeDate} birthday={this.state.date}
             setName={this.handleTextField} submitBasicForm={this.nextStep}/>
         case 2:
-            return <h1>Hello Mayukh</h1>
+            return <ProfessionalDetails 
+            companies={this.state.professionalQualifications}
+            addProfessionalData={this.addProfessionalData}
+            updateProfessionalData={this.updateProfessionalData}/>
         default:
     }  
     
